@@ -52,13 +52,18 @@ class Wunderground
 	{
 		$this->data = $this->getData();
 	}
-
+	
+	/**
+	 * Get the latest data from the Wunderground API
+	 * @return array
+	 */
 	public function getData()
 	{
 		$xmlSource = $this->resolveStationUrl($this->station->getStationId());
 
 		$parsed = $this->parseRawData($xmlSource);
 
+		// Small check if station exists
 		if (is_array($parsed['relative_humidity']) && count($parsed['relative_humidity']) === 0)
 		{
 			throw new Exception("The station " . $this->station->getStationId() . " does not exists!");
