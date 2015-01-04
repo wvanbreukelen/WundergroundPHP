@@ -1,8 +1,8 @@
 <?php
 
-namespace WundergroundPHP;
+namespace Wunderground;
 
-class WundergroundStation {
+class Station {
 
 	private $stationId;
 
